@@ -1,17 +1,85 @@
-@import "../../node_modules/bulma/bulma.sass";
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'variables';
 
 html,
 body {
   font-family: Roboto, sans-serif;
-  height: 100%;
 }
 
-.app-container {
-  padding: 24px 0;
+html,
+body,
+pre,
+#app,
+.container,
+.row {
   height: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  margin: 0;
+  max-width: 100%;
+  padding: 0 10px;
+}
+
+.row {
+  .column {
+    &:first-child {
+      padding-left: 0;
+    }
+    &.column-15 {
+      flex: 0 0 15%;
+      max-width: 15%;
+    }
+    &.column-55 {
+      flex: 0 0 55%;
+      max-width: 55%;
+    }
+  }
+}
+
+.settings-dashboard {
+  box-shadow: 0 9px 0px 0px $white, 0 -9px 0px 0px $white, 12px 0 15px -4px $white, -5px 0 5px 0px rgba($grey, .75);
+  padding-top: 24px !important;
+}
+
+.form-title {
+  border-bottom: 2px solid $lavender;
+  padding-bottom: 5px;
+
+  h4 {
+    display: inline-block;
+    margin: 0 0 0 10px;
+  }
+}
+
+.form-body {
+  .form-group {
+    margin: 15px 0;
+  }
+
+  .rule-name {
+    font-size: 14px;
+    font-style: italic;
+    margin-left: 5px;
+  }
+}
+
+.combo-input {
+  input,
+  select {
+    width: 49%;
+  }
+}
+
+input {
+  transition: all .15s linear;
+
+  &.disabled {
+    background-color: $lightgrey;
+    border-color: $grey;
+  }
 }
 
 #editor {
-  height: 100%;
+  padding: 24px 72px 24px 0;
 }
