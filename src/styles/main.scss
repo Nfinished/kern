@@ -5,14 +5,18 @@ body {
   font-family: Roboto, sans-serif;
 }
 
+#app,
 html,
 body,
 pre,
-#app,
 .container,
 .row {
-  height: 100%;
+  height: 100vh;
   overflow-x: hidden;
+}
+
+.mobile {
+  display: none;
 }
 
 .container {
@@ -88,5 +92,23 @@ input {
 
   &:focus {
     outline: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .mobile {
+    display: block;
+
+    .container {
+      display: block;
+      margin: 0 auto;
+      max-width: 112rem;
+      overflow: hidden;
+      padding: 5rem 2rem 0;
+    }
+  }
+
+  .container {
+    display: none;
   }
 }

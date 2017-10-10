@@ -1,5 +1,15 @@
 <template>
   <div id="app">
+    <div class="mobile">
+      <div class="container">
+        <div class="row">
+          <div class="column">
+            <h1>Oh No!</h1>
+            <p>It looks like you're using a mobile device. Kern is intended for tablets and up, please check it out on a larger device!</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <div class="row">
         <div class="column column-20">

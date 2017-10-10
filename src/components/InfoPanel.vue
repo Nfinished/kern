@@ -29,6 +29,23 @@ export default {
   line-height: .9em;
   font-family: Inconsolata, monospace;
   margin: 0;
+  overflow: scroll;
   padding: 24px 0;
+
+  &::-webkit-scrollbar-track {
+    background-color: #F5F5F5;
+  	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+
+  &::-webkit-scrollbar {
+    background-color: #F5F5F5;
+  	height: 4px;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+  	background-color: $grey;
+  	border: 2px solid #555555;
+  }
 }
 </style>
