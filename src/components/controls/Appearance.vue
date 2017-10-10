@@ -11,17 +11,34 @@
             <Chrome v-model="color" />
           </div>
       </div>
+      <div class="form-group">
+        <label>Weight <span class="rule-name">(font-weight)</span></label>
+        <VueSlider
+          ref="weightSlider"
+          v-model="weight"
+          :data="weightOptions"
+          :min="100"
+          :max="900"
+          :interval="100"
+          :piecewise="true"
+          :process-style="{ 'background-color': '#9b4dca'}"
+          tooltip-dir="bottom"
+          :tooltip-style="{ 'background-color': '#9b4dca', 'border-color': '#9b4dca' }"
+          />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { Chrome } from 'vue-color'
+import vueSlider from 'vue-slider-component'
 
 export default {
   name: 'Appearance',
   components: {
-    Chrome
+    Chrome,
+    VueSlider: vueSlider
   },
   props: {
     rules: { type: Object, required: true }
@@ -29,8 +46,20 @@ export default {
   data () {
     return {
       collapsed: false,
-      colorCollapsed: false,
-      color: { hex: '#000000', rgba: { r: 0, g: 0, b: 0, a: 1 } }
+      colorCollapsed: true,
+      color: { hex: '#000000', rgba: { r: 0, g: 0, b: 0, a: 1 } },
+      weightOptions: [
+        100,
+        200,
+        300,
+        '400 (normal)',
+        500,
+        600,
+        '700 (bold)',
+        800,
+        900
+      ],
+      weight: '400 (normal)'
     }
   },
   computed: {
@@ -45,10 +74,18 @@ export default {
       handler (value) {
         this.rules.color = this.renderedColor
       }
+    },
+    weight: {
+      handler (value) {
+        const input = parseInt(this.weight)
+        if (input === this.weight) this.rules['font-weight'] = input
+        else if (input === 700) this.rules['font-weight'] = 'bold'
+        else this.rules['font-weight'] = 'normal'
+      }
     }
   },
   mounted () {
-    $(this.$refs.colorRef).fadeOut(1)
+    $(this.$refs.colorPanel).fadeOut(1)
   },
   methods: {
     collapse () {

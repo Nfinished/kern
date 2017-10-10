@@ -52,7 +52,8 @@ export default {
         'letter-spacing': 'normal',
         'line-height': 'normal',
         'word-spacing': 'normal',
-        color: '#000000'
+        color: '#000000',
+        'font-weight': 'normal'
       }
     }
   }
