@@ -18,7 +18,7 @@
             </div>
             <div class="form-body">
               <div class="form-group">
-                <label for="kerning">Kerning <span class="rule-name">(letter-spacing)</span></label>
+                <label>Tracking <span class="rule-name">(letter-spacing)</span></label>
                 <div class="combo-input">
                   <input type="text" v-model="letterSpacing" :class="{disabled: letterSpacingType === 'normal'}" :disabled="letterSpacingType === 'normal'">
                   <select id="letterSpacingType" v-model="letterSpacingType">
@@ -28,14 +28,14 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="lineHeight">Line Height <span class="rule-name">(line-height)</span></label>
+                <label>Leading <span class="rule-name">(line-height)</span></label>
                 <div class="combo-input">
                   <input type="text" v-model="lineHeight" :class="{disabled: lineHeightType === 'normal'}" :disabled="lineHeightType === 'normal'">
                   <select id="letterSpacingType" v-model="lineHeightType">
                     <option value="normal">normal</option>
                     <option value="multiplier">multiplier</option>
-                    <option value="px">px</option>
-                    <option value="percent">%</option>
+                    <option value="px">px (pixels)</option>
+                    <option value="percent">% (percent)</option>
                   </select>
                 </div>
               </div>

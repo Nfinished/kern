@@ -81,5 +81,12 @@ input {
 }
 
 #editor {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
   padding: 24px 72px 24px 0;
+
+  &:focus {
+    outline: 0;
+  }
 }
