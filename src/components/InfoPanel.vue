@@ -29,11 +29,11 @@ export default {
   border-left: 0;
   border-right: 0.3rem solid $lavender;
   font-size: .9em;
-  letter-spacing: normal;
+  letter-spacing: -.2px;
   font-family: Inconsolata, monospace;
   margin: 0;
   overflow: auto;
-  padding: 24px 0 0 12px;
+  padding: 24px 6px 0 12px;
 
   &::-webkit-scrollbar-track {
     background-color: $white;
