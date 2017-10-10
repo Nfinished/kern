@@ -46,36 +46,10 @@ export default {
       lineHeight: '',
       rules: {
         'letter-spacing': 'normal',
-        'line-height': 'normal'
+        'line-height': 'normal',
+        'word-spacing': 'normal'
       }
     }
-  },
-  computed: {
-    // rules () {
-    //   // Letter Spacing
-    //   let computedLetterSpacing = this.letterSpacingType === 'normal' ? 'normal' : this.letterSpacing ? `${this.letterSpacing}px` : 'normal'
-    //
-    //   // Line Height
-    //   let computedLineHeight
-    //   if (!this.lineHeight || this.lineHeightType === 'normal') computedLineHeight = 'normal'
-    //   else {
-    //     switch (this.lineHeightType) {
-    //       case 'multiplier':
-    //         computedLineHeight = this.lineHeight
-    //         break
-    //       case 'px':
-    //         computedLineHeight = `${this.lineHeight}px`
-    //         break
-    //       case 'percent':
-    //         computedLineHeight = `${this.lineHeight}%`
-    //         break
-    //     }
-    //   }
-    //   return {
-    //     'letter-spacing': computedLetterSpacing,
-    //     'line-height': computedLineHeight
-    //   }
-    // }
   }
 }
 </script>

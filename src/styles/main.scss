@@ -48,11 +48,11 @@ pre,
 
 .form-title {
   border-bottom: 2px solid $lavender;
+  cursor: pointer;
   padding-bottom: 5px;
   user-select: none;
 
   .fa {
-    cursor: pointer;
     transition: transform .15s linear;
 
     &.fa-lg {
