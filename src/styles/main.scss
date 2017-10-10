@@ -30,13 +30,13 @@ pre,
     &:first-child {
       padding-left: 0;
     }
-    &.column-15 {
-      flex: 0 0 15%;
-      max-width: 15%;
+
+    &.info-column {
+      max-width: 225px;
     }
-    &.column-55 {
-      flex: 0 0 55%;
-      max-width: 55%;
+
+    &.settings-column {
+      max-width: 300px;
     }
   }
 }
@@ -150,7 +150,7 @@ input {
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 730px) {
   .mobile {
     display: block;
 

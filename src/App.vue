@@ -19,15 +19,15 @@
         </svg>
       </a>
       <div class="row">
-        <div class="column column-20">
+        <div class="column info-column">
           <InfoPanel :rules="rules" />
         </div>
-        <div class="column column-55">
+        <div class="column editor-column">
           <div id="editor" :style="rules" contenteditable="true">
             Welcome to Kern! Play around with the settings on the sidebar to modify the way I look, or click on me to use your own text!
           </div>
         </div>
-        <div class="column column-25 settings-dashboard">
+        <div class="column settings-column settings-dashboard">
           <Appearance :rules="rules" />
           <Spacing :rules="rules" />
         </div>
