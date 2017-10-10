@@ -40,7 +40,7 @@ pre,
     }
   }
 }
-
+// Control Panel
 .settings-dashboard {
   box-shadow: 0 9px 0px 0px $white, 0 -9px 0px 0px $white, 12px 0 15px -4px $white, -5px 0 5px 0px rgba($grey, .75);
   padding-top: 24px !important;
@@ -50,9 +50,13 @@ pre,
   border-bottom: 2px solid $lavender;
   padding-bottom: 5px;
 
+  .fa-lg {
+    vertical-align: baseline;
+  }
+
   h4 {
     display: inline-block;
-    margin: 0 0 0 10px;
+    margin: 0;
   }
 }
 
@@ -72,6 +76,17 @@ pre,
   input,
   select {
     width: 49%;
+  }
+}
+
+input,
+select {
+  &.warning {
+    border-color: orange;
+  }
+
+  &.danger {
+    border-color: red;
   }
 }
 
