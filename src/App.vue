@@ -21,6 +21,7 @@
           </div>
         </div>
         <div class="column column-25 settings-dashboard">
+          <Decoration :rules="rules" />
           <Spacing :rules="rules" />
         </div>
       </div>
@@ -30,12 +31,15 @@
 
 <script>
 import InfoPanel from './components/InfoPanel'
+
+import Decoration from './components/controls/Decoration'
 import Spacing from './components/controls/Spacing'
 
 export default {
   name: 'app',
   components: {
     InfoPanel,
+    Decoration,
     Spacing
   },
   data () {
@@ -47,7 +51,8 @@ export default {
       rules: {
         'letter-spacing': 'normal',
         'line-height': 'normal',
-        'word-spacing': 'normal'
+        'word-spacing': 'normal',
+        color: '#000000'
       }
     }
   }
