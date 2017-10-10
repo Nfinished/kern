@@ -29,7 +29,7 @@ export default {
   line-height: .9em;
   font-family: Inconsolata, monospace;
   margin: 0;
-  overflow: scroll;
+  overflow: auto;
   padding: 24px 0;
 
   &::-webkit-scrollbar-track {
