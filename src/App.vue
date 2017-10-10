@@ -49,11 +49,13 @@ export default {
       lineHeightType: 'normal',
       lineHeight: '',
       rules: {
+        // Appearance
+        color: '#000000',
+        'font-weight': 'normal',
+        // Spacing
         'letter-spacing': 'normal',
         'line-height': 'normal',
-        'word-spacing': 'normal',
-        color: '#000000',
-        'font-weight': 'normal'
+        'word-spacing': 'normal'
       }
     }
   }
