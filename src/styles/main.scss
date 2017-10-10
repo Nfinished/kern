@@ -53,14 +53,9 @@ pre,
   user-select: none;
 
   .fa {
-    transition: transform .15s linear;
 
     &.fa-lg {
       vertical-align: baseline;
-    }
-
-    &.collapsed {
-      transform: rotateZ(-90deg);
     }
   }
 
@@ -68,6 +63,14 @@ pre,
   h4 {
     display: inline-block;
     margin: 0;
+  }
+}
+
+.fa {
+  transition: transform .15s linear;
+
+  &.collapsed {
+    transform: rotateZ(-90deg);
   }
 }
 
