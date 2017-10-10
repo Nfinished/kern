@@ -5,26 +5,26 @@
       <h4>Appearance</h4>
     </div>
     <div class="form-body" ref="panel">
+      <div class="form-group slider">
+        <label>Weight <span class="rule-name">(font-weight)</span></label>
+        <VueSlider
+        ref="weightSlider"
+        v-model="weight"
+        :data="weightOptions"
+        :min="100"
+        :max="900"
+        :interval="100"
+        :piecewise="true"
+        :process-style="{ 'background-color': '#9b4dca'}"
+        tooltip-dir="bottom"
+        :tooltip-style="{ 'background-color': '#9b4dca', 'border-color': '#9b4dca' }"
+        />
+      </div>
       <div class="form-group">
-        <label @click="colorCollapse" class="clickable"><span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: colorCollapsed }"></span>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
+        <label @click="colorCollapse" class="clickable toggleable"><span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: colorCollapsed }"></span>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
           <div ref="colorPanel">
             <Chrome v-model="color" />
           </div>
-      </div>
-      <div class="form-group">
-        <label>Weight <span class="rule-name">(font-weight)</span></label>
-        <VueSlider
-          ref="weightSlider"
-          v-model="weight"
-          :data="weightOptions"
-          :min="100"
-          :max="900"
-          :interval="100"
-          :piecewise="true"
-          :process-style="{ 'background-color': '#9b4dca'}"
-          tooltip-dir="bottom"
-          :tooltip-style="{ 'background-color': '#9b4dca', 'border-color': '#9b4dca' }"
-          />
       </div>
     </div>
   </div>
@@ -105,5 +105,13 @@ export default {
   display: block;
   font-size: 1.25rem;
   margin-left: 30px;
+}
+
+.slider {
+  margin-bottom: 50px;
+}
+
+.toggleable {
+  transform: translateX(-12px)
 }
 </style>

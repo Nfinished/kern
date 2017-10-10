@@ -36,8 +36,7 @@ export default {
   padding: 24px 0 0 12px;
 
   &::-webkit-scrollbar-track {
-    background-color: #F5F5F5;
-  	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: $white;
   }
 
   &::-webkit-scrollbar {
@@ -48,7 +47,7 @@ export default {
 
   &::-webkit-scrollbar-thumb {
   	background-color: $grey;
-  	border: 2px solid #555555;
+  	border: 2px solid $lavender;
   }
 }
 </style>
