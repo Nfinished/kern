@@ -1,10 +1,10 @@
 <template>
   <div class="settings-group">
     <div class="form-title">
-      <span class="fa fa-lg fa-fw fa-angle-down"></span>
+      <span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: collapsed }"@click="collapse"></span>
       <h4>Spacing Rules</h4>
     </div>
-    <div class="form-body">
+    <div class="form-body" ref="panel">
       <div class="form-group">
         <label>Tracking <span class="rule-name">(letter-spacing)</span></label>
         <div class="combo-input">
@@ -44,6 +44,7 @@ export default {
   },
   data () {
     return {
+      collapsed: false,
       letterSpacing: { type: 'normal', value: '' },
       lineHeight: { type: 'normal', value: '' }
     }
@@ -70,6 +71,12 @@ export default {
         }
       },
       deep: true
+    }
+  },
+  methods: {
+    collapse () {
+      this.collapsed = !this.collapsed
+      $(this.$refs.panel).slideToggle(150)
     }
   }
 }
