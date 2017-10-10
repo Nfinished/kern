@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="column column-25 settings-dashboard">
-          <Decoration :rules="rules" />
+          <Appearance :rules="rules" />
           <Spacing :rules="rules" />
         </div>
       </div>
@@ -32,14 +32,14 @@
 <script>
 import InfoPanel from './components/InfoPanel'
 
-import Decoration from './components/controls/Decoration'
+import Appearance from './components/controls/Appearance'
 import Spacing from './components/controls/Spacing'
 
 export default {
   name: 'app',
   components: {
     InfoPanel,
-    Decoration,
+    Appearance,
     Spacing
   },
   data () {

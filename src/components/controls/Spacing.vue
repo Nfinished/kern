@@ -2,7 +2,7 @@
   <div class="settings-group">
     <div class="form-title" @click="collapse">
       <span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: collapsed }"></span>
-      <h4>Spacing Rules</h4>
+      <h4>Spacing</h4>
     </div>
     <div class="form-body" ref="panel">
       <div class="form-group">

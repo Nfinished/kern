@@ -2,7 +2,7 @@
   <div class="settings-group">
     <div class="form-title" @click="collapse">
       <span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: collapsed }"></span>
-      <h4>Decoration</h4>
+      <h4>Appearance</h4>
     </div>
     <div class="form-body" ref="panel">
       <div class="form-group">
@@ -19,7 +19,7 @@
 import { Chrome } from 'vue-color'
 
 export default {
-  name: 'Decoration',
+  name: 'Appearance',
   components: {
     Chrome
   },
