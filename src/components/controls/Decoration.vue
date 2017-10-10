@@ -6,7 +6,7 @@
     </div>
     <div class="form-body" ref="panel">
       <div class="form-group">
-        <label @click="colorCollapse"><span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: colorCollapsed }"></span>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: color.hex }" ref="colorRef">{{ color.hex }}</span></label>
+        <label @click="colorCollapse"><span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: colorCollapsed }"></span>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
           <div ref="colorPanel">
             <Chrome v-model="color" />
           </div>
@@ -30,13 +30,20 @@ export default {
     return {
       collapsed: false,
       colorCollapsed: false,
-      color: { hex: '#000000' }
+      color: { hex: '#000000', rgba: { r: 0, g: 0, b: 0, a: 1 } }
+    }
+  },
+  computed: {
+    renderedColor () {
+      const hasAlphaChannel = this.color.rgba.a < 1
+      if (hasAlphaChannel) return `rgba(${this.color.rgba.r}, ${this.color.rgba.g}, ${this.color.rgba.b}, ${this.color.rgba.a})`
+      else return this.color.hex
     }
   },
   watch: {
     color: {
       handler (value) {
-        this.rules.color = this.color.hex
+        this.rules.color = this.renderedColor
       }
     }
   },
@@ -51,7 +58,6 @@ export default {
     colorCollapse () {
       this.colorCollapsed = !this.colorCollapsed
       $(this.$refs.colorPanel).slideToggle(150)
-      $(this.$refs.colorRef).fadeToggle(150)
     }
   }
 }
@@ -59,6 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 .color-ref {
+  font-size: 1.25rem;
   margin-left: 15px;
 }
 </style>
