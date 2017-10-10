@@ -46,6 +46,10 @@ pre,
   padding-top: 24px !important;
 }
 
+.settings-group {
+  margin-bottom: 4em;
+}
+
 .form-title {
   border-bottom: 2px solid $lavender;
   cursor: pointer;
@@ -75,8 +79,13 @@ pre,
 }
 
 .form-body {
+  padding-left: 24px;
   .form-group {
     margin: 15px 0;
+  }
+
+  .clickable {
+    cursor: pointer;
   }
 
   .rule-name {
@@ -124,7 +133,7 @@ input {
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1050px) {
   .mobile {
     display: block;
 

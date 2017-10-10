@@ -6,7 +6,7 @@
     </div>
     <div class="form-body" ref="panel">
       <div class="form-group">
-        <label @click="colorCollapse"><span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: colorCollapsed }"></span>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
+        <label @click="colorCollapse" class="clickable"><span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: colorCollapsed }"></span>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
           <div ref="colorPanel">
             <Chrome v-model="color" />
           </div>
@@ -65,7 +65,8 @@ export default {
 
 <style lang="scss" scoped>
 .color-ref {
+  display: block;
   font-size: 1.25rem;
-  margin-left: 15px;
+  margin-left: 30px;
 }
 </style>
