@@ -21,17 +21,17 @@
         />
       </div>
       <div class="form-group">
+        <label>Text Decoration <span class="rule-name">(text-decoration)</span></label>
+        <div v-for="rule in textDecoration">
+          <ToggleButton :value="rule.value" @change="toggleTextDecoration(rule)" color="#9b4dca" :sync="true" />
+          <label class="toggle-label" :class="{disabled: !rule.value}">{{ rule.label }}</label>
+        </div>
+      </div>
+      <div class="form-group">
         <label @click="colorCollapse" class="clickable toggleable"><span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: colorCollapsed }"></span>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
           <div ref="colorPanel">
             <Chrome v-model="color" />
           </div>
-      </div>
-      <div class="form-group">
-        <label>Text Decoration <span class="rule-name">(text-decoration)</span></label>
-        <div v-for="rule in textDecoration">
-          <ToggleButton :value="rule.value" color="#9b4dca" :sync="true" />
-          <label class="toggle-label" :class="{disabled: !rule.value}">{{ rule.label }}</label>
-        </div>
       </div>
     </div>
   </div>
@@ -98,6 +98,17 @@ export default {
         else if (input === 700) this.rules['font-weight'] = 'bold'
         else this.rules['font-weight'] = 'normal'
       }
+    },
+    textDecoration: {
+      handler (value) {
+        let rules = []
+        this.textDecoration.forEach(rule => {
+          if (rule.value) rules.push(rule.label)
+        })
+        if (!rules || rules.includes('none')) this.rules['text-decoration'] = 'none'
+        else this.rules['text-decoration'] = rules.join(' ')
+      },
+      deep: true
     }
   },
   mounted () {
@@ -111,6 +122,17 @@ export default {
     colorCollapse () {
       this.colorCollapsed = !this.colorCollapsed
       $(this.$refs.colorPanel).slideToggle(150)
+    },
+    toggleTextDecoration (rule) {
+      rule.value = !rule.value
+      switch (rule.label) {
+        case 'none':
+          if (rule.value) this.textDecoration.slice(1).forEach(_ => { _.value = false })
+          break
+        default:
+          if (rule.value) this.textDecoration[0].value = false
+          break
+      }
     }
   }
 }

@@ -61,8 +61,8 @@ export default {
       rules: {
         // Appearance
         'font-weight': 'normal',
-        color: '#000000',
         'text-decoration': 'none',
+        color: '#000000',
         // Spacing
         'letter-spacing': 'normal',
         'line-height': 'normal',
