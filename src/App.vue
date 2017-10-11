@@ -25,6 +25,9 @@
         <div class="column editor-column">
           <div id="editor" :style="rules" contenteditable="true">
             Welcome to Kern! Play around with the settings on the sidebar to modify the way I look, or click on me to use your own text!
+          </br>
+          </br>
+          Kern is still in development, so some things may not work the way they're intended, and others may not work at all.
           </div>
         </div>
         <div class="column settings-column settings-dashboard">
@@ -37,10 +40,10 @@
 </template>
 
 <script>
-import InfoPanel from './components/InfoPanel'
+import InfoPanel from './Components/InfoPanel'
 
-import Appearance from './components/controls/Appearance'
-import Spacing from './components/controls/Spacing'
+import Appearance from './Components/Controls/Appearance'
+import Spacing from './Components/Controls/Spacing'
 
 export default {
   name: 'app',
@@ -57,8 +60,9 @@ export default {
       lineHeight: '',
       rules: {
         // Appearance
-        color: '#000000',
         'font-weight': 'normal',
+        color: '#000000',
+        'text-decoration': 'none',
         // Spacing
         'letter-spacing': 'normal',
         'line-height': 'normal',

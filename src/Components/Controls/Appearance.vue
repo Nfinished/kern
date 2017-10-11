@@ -26,11 +26,20 @@
             <Chrome v-model="color" />
           </div>
       </div>
+      <div class="form-group">
+        <label>Text Decoration <span class="rule-name">(text-decoration)</span></label>
+        <div v-for="rule in textDecoration">
+          <ToggleButton :value="rule.value" color="#9b4dca" :sync="true" />
+          <label class="toggle-label" :class="{disabled: !rule.value}">{{ rule.label }}</label>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import ToggleButton from '../FormElements/ToggleButton'
+
 import { Chrome } from 'vue-color'
 import vueSlider from 'vue-slider-component'
 
@@ -38,7 +47,8 @@ export default {
   name: 'Appearance',
   components: {
     Chrome,
-    VueSlider: vueSlider
+    VueSlider: vueSlider,
+    ToggleButton
   },
   props: {
     rules: { type: Object, required: true }
@@ -59,7 +69,13 @@ export default {
         800,
         900
       ],
-      weight: '400 (normal)'
+      weight: '400 (normal)',
+      textDecoration: [
+        { label: 'none', value: true },
+        { label: 'overline', value: false },
+        { label: 'line-through', value: false },
+        { label: 'underline', value: false }
+      ]
     }
   },
   computed: {
@@ -101,6 +117,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .color-ref {
   display: block;
   font-size: 1.25rem;
@@ -113,5 +130,14 @@ export default {
 
 .toggleable {
   transform: translateX(-12px)
+}
+
+.toggle-label {
+  display: inline-block;
+  margin-left: 8px;
+
+  &.disabled {
+    color: #ccc;
+  }
 }
 </style>
