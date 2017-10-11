@@ -105,7 +105,7 @@ export default {
         this.textDecoration.forEach(rule => {
           if (rule.value) rules.push(rule.label)
         })
-        if (!rules || rules.includes('none')) this.rules['text-decoration'] = 'none'
+        if (!rules.length || rules.includes('none')) this.rules['text-decoration'] = 'none'
         else this.rules['text-decoration'] = rules.join(' ')
       },
       deep: true
