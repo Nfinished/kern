@@ -1,5 +1,5 @@
 <template>
-  <Control title="Color">
+  <Control title="Text Color">
     <template slot="body">
       <div class="form-group">
         <label>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
@@ -13,6 +13,7 @@
 
 <script>
 import Control from './Control'
+
 import { Chrome } from 'vue-color'
 
 export default {

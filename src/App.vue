@@ -23,15 +23,19 @@
           <InfoPanel />
         </div>
         <div class="column editor-column">
-          <div id="editor" :style="ruleStore" contenteditable="true">
+          <div id="editor" :style="ruleStore" contenteditable="true" spellcheck="false">
             Welcome to Kern! Play around with the settings on the sidebar to modify the way I look, or click on me to use your own text!
           </br>
           </br>
           Kern is still in development, so some things may not work the way they're intended, and others may not work at all.
+          </br>
+          </br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus gravida diam. Cras a mi magna. Donec non ornare ipsum, at varius libero. Duis ac magna et ante feugiat eleifend at posuere elit. Morbi eu leo gravida, varius urna vel, commodo justo. Vivamus vestibulum elit id bibendum sollicitudin. Phasellus turpis sapien, imperdiet eget tellus non, iaculis convallis turpis. Nullam blandit ligula semper efficitur auctor. Cras in risus nec nunc feugiat feugiat. Suspendisse ullamcorper sodales pretium. Nam mattis ligula sed rhoncus lacinia. Cras sit amet nulla ac nibh ullamcorper iaculis a eget metus. Phasellus id tortor aliquet, semper quam non, rutrum nisl. Proin sollicitudin posuere viverra.
           </div>
         </div>
         <div class="column settings-column settings-dashboard">
-          <component v-for="component in components" :key="component.id" :is="component" />
+          <!-- <component v-for="component, name in components" :key="component.id" :is="ControlList[name]" /> -->
+          <component v-for="tool in components" :key="tool.id" :is="tool" />
         </div>
       </div>
     </div>
@@ -40,11 +44,12 @@
 
 <script>
 import InfoPanel from './Components/InfoPanel'
+// import * as ControlList from './Components/Controls/controlList'
 
 import Appearance from './Components/Controls/Appearance'
-import TextProperties from './Components/Controls/TextProperties'
-import TextDecoration from './Components/Controls/TextDecoration'
 import Color from './Components/Controls/Color'
+import TextDecoration from './Components/Controls/TextDecoration'
+import TextProperties from './Components/Controls/TextProperties'
 
 export default {
   name: 'app',
@@ -52,16 +57,15 @@ export default {
   components: {
     InfoPanel,
     Appearance,
-    TextProperties,
+    Color,
     TextDecoration,
-    Color
+    TextProperties
   },
   data () {
     return {
       components: [
-        'Appearance',
         'Color',
-        'textDecoration',
+        'TextDecoration',
         'TextProperties'
       ]
     }
