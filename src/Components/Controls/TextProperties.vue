@@ -1,10 +1,6 @@
 <template>
-  <div class="settings-group">
-    <div class="form-title" @click="collapse">
-      <span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: collapsed }"></span>
-      <h4>Spacing</h4>
-    </div>
-    <div class="form-body" ref="panel">
+  <Control title="Text Properties">
+    <template slot="body">
       <div class="form-group">
         <label>Leading <span class="rule-name">(line-height)</span></label>
         <div class="combo-input">
@@ -48,18 +44,21 @@
           </select>
         </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </Control>
 </template>
 
 <script>
+import Control from './Control'
 
 export default {
-  name: 'Spacing',
+  name: 'TextProperties',
+  components: {
+    Control
+  },
   store: ['ruleStore'],
   data () {
     return {
-      collapsed: false,
       lineHeight: { type: 'normal', value: '' },
       letterSpacing: { type: 'normal', value: '' },
       wordSpacing: { type: 'normal', value: '' }
@@ -98,12 +97,6 @@ export default {
         }
       },
       deep: true
-    }
-  },
-  methods: {
-    collapse () {
-      this.collapsed = !this.collapsed
-      $(this.$refs.panel).slideToggle(150)
     }
   }
 }

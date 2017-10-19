@@ -42,7 +42,9 @@
 import InfoPanel from './Components/InfoPanel'
 
 import Appearance from './Components/Controls/Appearance'
-import Spacing from './Components/Controls/Spacing'
+import TextProperties from './Components/Controls/TextProperties'
+import TextDecoration from './Components/Controls/TextDecoration'
+import Color from './Components/Controls/Color'
 
 export default {
   name: 'app',
@@ -50,13 +52,17 @@ export default {
   components: {
     InfoPanel,
     Appearance,
-    Spacing
+    TextProperties,
+    TextDecoration,
+    Color
   },
   data () {
     return {
       components: [
         'Appearance',
-        'Spacing'
+        'Color',
+        'textDecoration',
+        'TextProperties'
       ]
     }
   }

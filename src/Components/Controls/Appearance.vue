@@ -1,10 +1,6 @@
 <template>
-  <div class="settings-group">
-    <div class="form-title" @click="collapse">
-      <span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: collapsed }"></span>
-      <h4>Appearance</h4>
-    </div>
-    <div class="form-body" ref="panel">
+  <Control title="Appearance">
+    <template slot="body">
       <div class="form-group slider">
         <label>Weight <span class="rule-name">(font-weight)</span></label>
         <VueSlider
@@ -20,42 +16,27 @@
         :tooltip-style="{ 'background-color': '#9b4dca', 'border-color': '#9b4dca' }"
         />
       </div>
-      <div class="form-group">
-        <label>Text Decoration <span class="rule-name">(text-decoration)</span></label>
-        <div v-for="rule in textDecoration">
-          <ToggleButton :value="rule.value" @change="toggleTextDecoration(rule)" color="#9b4dca" :sync="true" />
-          <label class="toggle-label" :class="{disabled: !rule.value}">{{ rule.label }}</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label @click="colorCollapse" class="clickable toggleable"><span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: colorCollapsed }"></span>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
-          <div ref="colorPanel">
-            <Chrome v-model="color" />
-          </div>
-      </div>
-    </div>
-  </div>
+    </template>
+  </Control>
 </template>
 
 <script>
-import ToggleButton from '../FormElements/ToggleButton'
+import Control from './Control'
 
-import { Chrome } from 'vue-color'
 import vueSlider from 'vue-slider-component'
 
 export default {
   name: 'Appearance',
   store: ['ruleStore'],
   components: {
-    Chrome,
     VueSlider: vueSlider,
-    ToggleButton
+    Control
   },
   data () {
     return {
       collapsed: false,
       colorCollapsed: true,
-      color: { hex: '#000000', rgba: { r: 0, g: 0, b: 0, a: 1 } },
+      weight: '400 (normal)',
       weightOptions: [
         100,
         200,
@@ -66,70 +47,16 @@ export default {
         '700 (bold)',
         800,
         900
-      ],
-      weight: '400 (normal)',
-      textDecoration: [
-        { label: 'none', value: true },
-        { label: 'overline', value: false },
-        { label: 'line-through', value: false },
-        { label: 'underline', value: false }
       ]
     }
   },
-  computed: {
-    renderedColor () {
-      const hasAlphaChannel = this.color.rgba.a < 1
-      if (hasAlphaChannel) return `rgba(${this.color.rgba.r}, ${this.color.rgba.g}, ${this.color.rgba.b}, ${this.color.rgba.a})`
-      else return this.color.hex
-    }
-  },
   watch: {
-    color: {
-      handler (value) {
-        this.ruleStore.color = this.renderedColor
-      }
-    },
     weight: {
       handler (value) {
         const input = parseInt(this.weight)
         if (input === this.weight) this.ruleStore['font-weight'] = input
         else if (input === 700) this.ruleStore['font-weight'] = 'bold'
         else this.ruleStore['font-weight'] = 'normal'
-      }
-    },
-    textDecoration: {
-      handler (value) {
-        let rules = []
-        this.textDecoration.forEach(rule => {
-          if (rule.value) rules.push(rule.label)
-        })
-        if (!rules.length || rules.includes('none')) this.ruleStore['text-decoration'] = 'none'
-        else this.ruleStore['text-decoration'] = rules.join(' ')
-      },
-      deep: true
-    }
-  },
-  mounted () {
-    $(this.$refs.colorPanel).fadeOut(1)
-  },
-  methods: {
-    collapse () {
-      this.collapsed = !this.collapsed
-      $(this.$refs.panel).slideToggle(150)
-    },
-    colorCollapse () {
-      this.colorCollapsed = !this.colorCollapsed
-      $(this.$refs.colorPanel).slideToggle(150)
-    },
-    toggleTextDecoration (rule) {
-      rule.value = !rule.value
-      switch (rule.label) {
-        case 'none':
-          if (rule.value) this.textDecoration.slice(1).forEach(_ => { _.value = false })
-          break
-        default:
-          if (rule.value) this.textDecoration[0].value = false
-          break
       }
     }
   }
@@ -138,26 +65,8 @@ export default {
 
 <style lang="scss" scoped>
 
-.color-ref {
-  display: block;
-  font-size: 1.25rem;
-  margin-left: 30px;
-}
-
 .slider {
   margin-bottom: 50px;
 }
 
-.toggleable {
-  transform: translateX(-12px)
-}
-
-.toggle-label {
-  display: inline-block;
-  margin-left: 8px;
-
-  &.disabled {
-    color: #ccc;
-  }
-}
 </style>
