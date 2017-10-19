@@ -41,8 +41,10 @@ export default {
         this.textDecoration.forEach(rule => {
           if (rule.value) rules.push(rule.label)
         })
-        if (!rules.length || rules.includes('none')) this.ruleStore['text-decoration'] = 'none'
-        else this.ruleStore['text-decoration'] = rules.join(' ')
+        if (!rules.length || rules.includes('none')) {
+          this.ruleStore['text-decoration'] = 'none'
+          this.textDecoration[0].value = true
+        } else this.ruleStore['text-decoration'] = rules.join(' ')
       },
       deep: true
     }
