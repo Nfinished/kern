@@ -5,14 +5,12 @@
 <script>
 export default {
   name: 'InfoPanel',
-  props: {
-    rules: { type: Object, required: true }
-  },
+  store: ['ruleStore'],
   computed: {
     stringifiedRules () {
       let stringifiedRules = 'div {\n'
-      for (const rule in this.rules) {
-        stringifiedRules = stringifiedRules.concat(` ${rule}: ${this.rules[rule]};\n`)
+      for (const rule in this.ruleStore) {
+        stringifiedRules = stringifiedRules.concat(` ${rule}: ${this.ruleStore[rule]};\n`)
       }
       stringifiedRules = stringifiedRules.concat('}')
       return stringifiedRules

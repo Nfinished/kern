@@ -56,9 +56,7 @@
 
 export default {
   name: 'Spacing',
-  props: {
-    rules: { type: Object, required: true }
-  },
+  store: ['ruleStore'],
   data () {
     return {
       collapsed: false,
@@ -72,9 +70,9 @@ export default {
       handler (value) {
         const input = parseInt(value.value)
         if (value.type !== 'normal' && input) {
-          this.rules['line-height'] = input + value.type
+          this.ruleStore['line-height'] = input + value.type
         } else {
-          this.rules['line-height'] = 'normal'
+          this.ruleStore['line-height'] = 'normal'
         }
       },
       deep: true
@@ -83,9 +81,9 @@ export default {
       handler (value) {
         const input = parseInt(value.value)
         if (value.type !== 'normal' && input) {
-          this.rules['letter-spacing'] = input + value.type
+          this.ruleStore['letter-spacing'] = input + value.type
         } else {
-          this.rules['letter-spacing'] = 'normal'
+          this.ruleStore['letter-spacing'] = 'normal'
         }
       },
       deep: true
@@ -94,9 +92,9 @@ export default {
       handler (value) {
         const input = parseInt(value.value)
         if (value.type !== 'normal' && input) {
-          this.rules['word-spacing'] = input + value.type
+          this.ruleStore['word-spacing'] = input + value.type
         } else {
-          this.rules['word-spacing'] = 'normal'
+          this.ruleStore['word-spacing'] = 'normal'
         }
       },
       deep: true

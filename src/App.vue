@@ -20,10 +20,10 @@
       </a>
       <div class="row">
         <div class="column info-column">
-          <InfoPanel :rules="rules" />
+          <InfoPanel />
         </div>
         <div class="column editor-column">
-          <div id="editor" :style="rules" contenteditable="true">
+          <div id="editor" :style="ruleStore" contenteditable="true">
             Welcome to Kern! Play around with the settings on the sidebar to modify the way I look, or click on me to use your own text!
           </br>
           </br>
@@ -31,8 +31,7 @@
           </div>
         </div>
         <div class="column settings-column settings-dashboard">
-          <Appearance :rules="rules" />
-          <Spacing :rules="rules" />
+          <component v-for="component in components" :key="component.id" :is="component" />
         </div>
       </div>
     </div>
@@ -47,6 +46,7 @@ import Spacing from './Components/Controls/Spacing'
 
 export default {
   name: 'app',
+  store: ['ruleStore'],
   components: {
     InfoPanel,
     Appearance,
@@ -54,20 +54,10 @@ export default {
   },
   data () {
     return {
-      letterSpacingType: 'normal',
-      letterSpacing: '',
-      lineHeightType: 'normal',
-      lineHeight: '',
-      rules: {
-        // Appearance
-        'font-weight': 'normal',
-        'text-decoration': 'none',
-        color: '#000000',
-        // Spacing
-        'letter-spacing': 'normal',
-        'line-height': 'normal',
-        'word-spacing': 'normal'
-      }
+      components: [
+        'Appearance',
+        'Spacing'
+      ]
     }
   }
 }

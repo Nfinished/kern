@@ -45,13 +45,11 @@ import vueSlider from 'vue-slider-component'
 
 export default {
   name: 'Appearance',
+  store: ['ruleStore'],
   components: {
     Chrome,
     VueSlider: vueSlider,
     ToggleButton
-  },
-  props: {
-    rules: { type: Object, required: true }
   },
   data () {
     return {
@@ -88,15 +86,15 @@ export default {
   watch: {
     color: {
       handler (value) {
-        this.rules.color = this.renderedColor
+        this.ruleStore.color = this.renderedColor
       }
     },
     weight: {
       handler (value) {
         const input = parseInt(this.weight)
-        if (input === this.weight) this.rules['font-weight'] = input
-        else if (input === 700) this.rules['font-weight'] = 'bold'
-        else this.rules['font-weight'] = 'normal'
+        if (input === this.weight) this.ruleStore['font-weight'] = input
+        else if (input === 700) this.ruleStore['font-weight'] = 'bold'
+        else this.ruleStore['font-weight'] = 'normal'
       }
     },
     textDecoration: {
@@ -105,8 +103,8 @@ export default {
         this.textDecoration.forEach(rule => {
           if (rule.value) rules.push(rule.label)
         })
-        if (!rules.length || rules.includes('none')) this.rules['text-decoration'] = 'none'
-        else this.rules['text-decoration'] = rules.join(' ')
+        if (!rules.length || rules.includes('none')) this.ruleStore['text-decoration'] = 'none'
+        else this.ruleStore['text-decoration'] = rules.join(' ')
       },
       deep: true
     }
