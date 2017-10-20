@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-group">
+  <div class="settings-group" :name="title">
     <div class="form-title" @click="collapse">
       <span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: collapsed }"></span>
       <h4>{{ title }}</h4>
