@@ -1,6 +1,8 @@
 export default {
-  // Appearance
+  // Font Properties
   'font-weight': 'normal',
+  // 'font-stretch': 'normal',
+  'font-variant': 'normal',
   color: '#000000',
   // Spacing
   'letter-spacing': 'normal',

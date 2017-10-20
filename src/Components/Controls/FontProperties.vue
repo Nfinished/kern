@@ -1,6 +1,25 @@
 <template>
   <Control title="Font Properties" :hideOnLoad="false">
     <template slot="body">
+      <!-- <div class="form-group">
+        <label>Font Stretch<span class="rule-name">(font-stretch)</span></label>
+        <select id="fontStretch" v-model="ruleStore['font-stretch']">
+          <option value="ultra-condensed">ultra-condensed</option>
+          <option value="extra-condensed">extra-condensed</option>
+          <option value="condensed">condensed</option>
+          <option value="semi-condensed">semi-condensed</option>
+          <option value="normal">normal</option>
+          <option value="semi-expanded">semi-expanded</option>
+          <option value="expanded">expanded</option>
+          <option value="extra-expanded">extra-expanded</option>
+          <option value="ultra-expanded">ultra-condensed</option>
+        </select>
+      </div> -->
+      <div class="form-group">
+        <label>Font Variant <span class="rule-name">(font-variant)</span></label>
+        <ToggleButton @change="ruleStore['font-variant'] = ruleStore['font-variant'] === 'normal' ? 'small-caps' : 'normal'" color="#9b4dca" />
+        <label class="toggle-label" :class="{disabled: ruleStore['font-variant'] === 'normal'}">small-caps</label>
+      </div>
       <div class="form-group slider">
         <label>Weight <span class="rule-name">(font-weight)</span></label>
         <VueSlider
@@ -23,19 +42,22 @@
 <script>
 import Control from './Control'
 
+import ToggleButton from '../FormElements/ToggleButton'
 import vueSlider from 'vue-slider-component'
 
 export default {
   name: 'FontProperties',
   store: ['ruleStore'],
   components: {
-    VueSlider: vueSlider,
-    Control
+    Control,
+    ToggleButton,
+    VueSlider: vueSlider
   },
   data () {
     return {
       collapsed: false,
       colorCollapsed: true,
+      checked: true,
       weight: '400 (normal)',
       weightOptions: [
         100,

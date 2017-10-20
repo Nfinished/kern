@@ -41,4 +41,30 @@ export default {
 h4 {
   text-transform: capitalize;
 }
+
+.toggleable {
+  transform: translateX(-12px)
+}
+
+.toggle-label {
+  display: inline-block;
+  margin-left: 8px;
+  transition: color .25s linear;
+
+  &.disabled {
+    color: #ccc;
+  }
+}
+
+.color-ref {
+  display: block;
+  font-size: 1em;
+}
+
+input[type='radio'] {
+  + label {
+    display: inline-block;
+    margin-left: 15px;
+  }
+}
 </style>

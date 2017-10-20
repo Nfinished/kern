@@ -96,23 +96,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
-.toggleable {
-  transform: translateX(-12px)
-}
-
-.toggle-label {
-  display: inline-block;
-  margin-left: 8px;
-
-  &.disabled {
-    color: #ccc;
-  }
-}
-
-.color-ref {
-  display: block;
-  font-size: 1em;
-}
-</style>
+<style lang="scss" scoped></style>

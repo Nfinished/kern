@@ -45,9 +45,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.color-ref {
-  display: block;
-  font-size: 1em;
-}
-</style>
+<style lang="scss" scoped></style>
