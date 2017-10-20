@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="column settings-column settings-dashboard">
-          <component v-for="control, name in Controls" :key="control" :is="Controls[name]" />
+          <component v-for="control in Controls" :key="control.id" :is="control" />
         </div>
       </div>
     </div>
@@ -43,18 +43,30 @@
 
 <script>
 import InfoPanel from './Components/InfoPanel'
-import * as Controls from './Components/Controls/controlList'
+
+import FontProperties from './Components/Controls/FontProperties'
+import Color from './Components/Controls/Color'
+import TextDecoration from './Components/Controls/TextDecoration'
+import TextProperties from './Components/Controls/TextProperties'
 
 export default {
   name: 'app',
   store: ['ruleStore'],
   components: {
     InfoPanel,
-    ...Controls
+    FontProperties,
+    Color,
+    TextDecoration,
+    TextProperties
   },
   data () {
     return {
-      Controls
+      Controls: [
+        'FontProperties',
+        'Color',
+        'TextDecoration',
+        'TextProperties'
+      ]
     }
   }
 }
