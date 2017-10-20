@@ -1,3 +1,5 @@
+[![buddy pipeline](https://app.buddy.works/nfinished/kern/pipelines/pipeline/62719/badge.svg?token=579c81138e8a80737ed62a6f0632cfa078c3403f23a310aa2c53e3777f1334ab "buddy pipeline")](https://app.buddy.works/nfinished/kern/pipelines/pipeline/62719)
+
 # kern
 
 > A CSS text templating tool
