@@ -4,7 +4,7 @@ import Vue from 'vue'
 import VueStash from 'vue-stash'
 import App from './App'
 
-import ruleStore from './stores/ruleStore'
+import * as stores from './stores/stores'
 
 Vue.config.productionTip = false
 Vue.use(VueStash)
@@ -14,7 +14,7 @@ new Vue({
   el: '#app',
   data: {
     store: {
-      ruleStore
+      ...stores
     }
   },
   template: '<App/>',

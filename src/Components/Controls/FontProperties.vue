@@ -1,5 +1,5 @@
 <template>
-  <Control title="Appearance">
+  <Control title="Font Properties" :hideOnLoad="false">
     <template slot="body">
       <div class="form-group slider">
         <label>Weight <span class="rule-name">(font-weight)</span></label>
@@ -26,7 +26,7 @@ import Control from './Control'
 import vueSlider from 'vue-slider-component'
 
 export default {
-  name: 'Appearance',
+  name: 'FontProperties',
   store: ['ruleStore'],
   components: {
     VueSlider: vueSlider,

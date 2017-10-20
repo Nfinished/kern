@@ -15,7 +15,7 @@ export default {
   name: 'Control',
   props: {
     title: { required: true, type: String },
-    hideOnLoad: { required: false, type: Boolean, default: false }
+    hideOnLoad: { required: false, type: Boolean, default: true }
   },
   data () {
     return {
