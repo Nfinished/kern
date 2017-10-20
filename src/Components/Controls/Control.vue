@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-group">
+  <div class="settings-group" :id="id">
     <div class="form-title" @click="collapse">
       <span class="fa fa-lg fa-fw fa-angle-down" :class="{ collapsed: collapsed }"></span>
       <h4>{{ title }}</h4>
@@ -19,7 +19,8 @@ export default {
   },
   data () {
     return {
-      collapsed: false
+      collapsed: false,
+      id: this.title.replace(/\s/g, '')
     }
   },
   mounted () {

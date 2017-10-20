@@ -17,10 +17,10 @@
       </div> -->
       <div class="form-group">
         <label>Variant <span class="rule-name">(font-variant)</span></label>
-        <ToggleButton @change="ruleStore['font-variant'] = ruleStore['font-variant'] === 'normal' ? 'small-caps' : 'normal'" color="#9b4dca" />
+        <ToggleButton id="FontVariantToggle" @change="ruleStore['font-variant'] = ruleStore['font-variant'] === 'normal' ? 'small-caps' : 'normal'" color="#9b4dca" />
         <label class="toggle-label" :class="{disabled: ruleStore['font-variant'] === 'normal'}">small-caps</label>
       </div>
-      <div class="form-group slider">
+      <div class="form-group slider" id="weightSlider">
         <label>Weight <span class="rule-name">(font-weight)</span></label>
         <VueSlider
         ref="weightSlider"

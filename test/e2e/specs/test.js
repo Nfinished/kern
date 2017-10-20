@@ -14,6 +14,21 @@ module.exports = {
       .assert.elementPresent('#gitlink')
       .assert.containsText('#editor', 'Welcome to Kern!')
       // Font Properties
+      .assert.elementPresent('#FontProperties')
+      .click('#FontProperties .form-title')
+      .pause(200)
+      .verify.cssClassPresent(
+        '#FontProperties > .form-title > span',
+        'collapsed',
+        'Panel is collapsed when panel title is clicked.')
+      .click('#FontProperties .form-title')
+      .pause(200)
+      .click('#FontVariantToggle')
+      .verify.cssClassNotPresent(
+        '#FontVariantToggle + label',
+        'disabled',
+        'Font variant label lights up when toggle is activated.')
+      .click('#FontVariantToggle')
       .end()
   }
 }
