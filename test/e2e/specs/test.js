@@ -59,7 +59,6 @@ module.exports = {
       .mouseButtonDown()
       .moveTo(-150, 0)
       .mouseButtonUp()
-      .pause(10000)
       .end()
   }
 }
