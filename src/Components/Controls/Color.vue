@@ -3,7 +3,7 @@
     <template slot="body">
       <div class="form-group">
         <label>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
-          <div ref="colorPanel">
+          <div ref="colorPanel" id="TextColorPicker">
             <Chrome v-model="color" />
           </div>
       </div>
