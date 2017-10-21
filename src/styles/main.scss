@@ -1,17 +1,169 @@
-@import "../../node_modules/bulma/bulma.sass";
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'variables';
 
 html,
 body {
   font-family: Roboto, sans-serif;
-  height: 100%;
 }
 
-.app-container {
-  padding: 24px 0;
-  height: 100%;
+#app,
+html,
+body,
+pre,
+.container,
+.row {
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.mobile {
+  display: none;
+}
+
+.container {
+  margin: 0;
+  max-width: 100%;
+  padding: 0 10px;
+}
+
+.row {
+  .column {
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &.info-column {
+      max-width: 250px;
+    }
+
+    &.settings-column {
+      max-width: 300px;
+    }
+  }
+}
+// Control Panel
+.settings-dashboard {
+  box-shadow: 0 9px 0px 0px $white, 0 -9px 0px 0px $white, 12px 0 15px -4px $white, -5px 0 5px 0px rgba($grey, .75);
+  padding-top: 24px !important;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar-track {
+    background-color: $white;
+  }
+
+  &::-webkit-scrollbar {
+    background-color: #F5F5F5;
+  	height: 4px;
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+  	background-color: $grey;
+  	border: 2px solid $lavender;
+  }
+}
+
+.settings-group {
+  margin-bottom: 4em;
+}
+
+.form-title {
+  border-bottom: 2px solid $lavender;
+  cursor: pointer;
+  padding-bottom: 5px;
+  user-select: none;
+
+  .fa {
+
+    &.fa-lg {
+      vertical-align: baseline;
+    }
+  }
+
+
+  h4 {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
+.fa {
+  transition: transform .15s linear;
+
+  &.collapsed {
+    transform: rotateZ(-90deg);
+  }
+}
+
+.form-body {
+  padding-left: 24px;
+  .form-group {
+    margin: 15px 0;
+  }
+
+  .clickable {
+    cursor: pointer;
+  }
+
+  .rule-name {
+    font-size: 14px;
+    font-style: italic;
+    margin-left: 5px;
+  }
+}
+
+.combo-input {
+  input,
+  select {
+    width: 49%;
+  }
+}
+
+input,
+select {
+  &.warning {
+    border-color: orange;
+  }
+
+  &.danger {
+    border-color: red;
+  }
+}
+
+input {
+  transition: all .15s linear;
+
+  &.disabled {
+    background-color: $lightgrey;
+    border-color: $grey;
+  }
 }
 
 #editor {
-  height: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 24px 72px 24px 0;
+  transition: all .15s linear;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .mobile {
+    display: block;
+
+    .container {
+      display: block;
+      margin: 0 auto;
+      max-width: 112rem;
+      overflow: hidden;
+      padding: 5rem 2rem 0;
+    }
+  }
+
+  .container {
+    display: none;
+  }
 }
