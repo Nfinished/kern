@@ -2,7 +2,7 @@
 // http://nightwatchjs.org/guide#usage
 
 module.exports = {
-  'default e2e tests': function (browser) {
+  'Component Tests': function (browser) {
     // automatically uses dev Server port from /config.index.js
     // default: http://localhost:8080
     // see nightwatch.conf.js
@@ -15,7 +15,7 @@ module.exports = {
       .assert.containsText('#editor', 'Welcome to Kern!')
       .assert.containsText('.info-panel', 'div')
 
-      // Font Properties
+      // Panel toggles
       .assert.elementPresent('#FontProperties')
       .click('#FontProperties .form-title')
       .pause(200)
@@ -23,38 +23,39 @@ module.exports = {
         '#FontProperties > .form-title > span',
         'collapsed',
         'Panel is collapsed when panel title is clicked.')
-      .click('#FontProperties .form-title')
+        .pause(200)
+        .click('#FontProperties .form-title')
+        .verify.cssClassNotPresent(
+          '#FontProperties > .form-title > span',
+          'collapsed',
+          'Panel is expanded when panel title is clicked again.')
       .pause(200)
-      // // font-variant
+
+      // // toggle buttons
       .click('#FontVariantToggle')
       .verify.cssClassNotPresent(
         '#FontVariantToggle + label',
         'disabled',
         'Font variant label lights up when toggle is activated.')
       .click('#FontVariantToggle')
-      // // font-weight
-      // Is this even doing anything?
+
+      // sliders
       .moveToElement('#weightSlider .vue-slider-dot', 0, 0)
       .mouseButtonDown()
       .moveTo(300, 0)
       .mouseButtonUp()
 
-      // Text Color
+      // color picker
       .assert.elementPresent('#TextColor')
       .click('#TextColor .form-title')
       .pause(200)
-      .verify.cssClassNotPresent(
-        '#TextColor > .form-title > span',
-        'collapsed',
-        'Panel is expanded when panel title is clicked.')
       .moveToElement('#TextColorPicker .vc-saturation', 150, 50)
       .mouseButtonClick()
-      // It's definitely not doing anything.
+      // TODO: Figure out why the below test doesn't look like it does anything, but passes anyway.
       .moveToElement('#TextColorPicker .vc-hue-picker', 0, 0)
       .mouseButtonDown()
       .moveTo(150, 0)
       .mouseButtonUp()
-      // TODO: Make it do something.
       .moveToElement('#TextColorPicker .vc-alpha-picker', 0, 0)
       .mouseButtonDown()
       .moveTo(-150, 0)
