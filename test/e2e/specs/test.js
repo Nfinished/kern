@@ -31,7 +31,7 @@ module.exports = {
           'Panel is expanded when panel title is clicked again.')
       .pause(200)
 
-      // // toggle buttons
+      // // vue toggle buttons
       .click('#FontVariantToggle')
       .verify.cssClassNotPresent(
         '#FontVariantToggle + label',
@@ -39,7 +39,7 @@ module.exports = {
         'Font variant label lights up when toggle is activated.')
       .click('#FontVariantToggle')
 
-      // sliders
+      // vue sliders
       .moveToElement('#weightSlider .vue-slider-dot', 0, 0)
       .mouseButtonDown()
       .moveTo(300, 0)
