@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node server.js",
-    "build": "npm install --dev && node build/build.js",
+    "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -17,7 +17,8 @@
   "dependencies": {
     "vue": "^2.4.2",
     "vue-color": "^2.4.0",
-    "vue-slider-component": "^2.4.3"
+    "vue-slider-component": "^2.4.3",
+    "webpack": "^3.6.0",
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -83,7 +84,6 @@
     "vue-stash": "^2.0.1-beta",
     "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.4.2",
-    "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.18.2",
