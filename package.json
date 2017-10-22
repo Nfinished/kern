@@ -18,7 +18,7 @@
     "vue": "^2.4.2",
     "vue-color": "^2.4.0",
     "vue-slider-component": "^2.4.3",
-    "webpack": "^3.6.0",
+    "webpack": "^3.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
