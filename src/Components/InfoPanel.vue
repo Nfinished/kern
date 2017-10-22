@@ -10,7 +10,8 @@ export default {
     stringifiedRules () {
       let stringifiedRules = 'div {\n'
       for (const rule in this.ruleStore) {
-        stringifiedRules = stringifiedRules.concat(` ${rule}: ${this.ruleStore[rule]};\n`)
+        const ruleValue = this.ruleStore[rule].value + (this.ruleStore[rule].type || '')
+        stringifiedRules = stringifiedRules.concat(` ${rule}: ${ruleValue};\n`)
       }
       stringifiedRules = stringifiedRules.concat('}')
       return stringifiedRules

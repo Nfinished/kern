@@ -10,7 +10,7 @@
       </div>
       <div class="form-group">
         <label>Line Style<span class="rule-name">(text-decoration-style)</span></label>
-          <select id="textDecorationStyle" v-model="ruleStore['text-decoration-style']">
+          <select id="textDecorationStyle" v-model="ruleStore['text-decoration-style'].value">
             <option value="solid">Solid</option>
             <option value="double">Double</option>
             <option value="dotted">Dotted</option>
@@ -21,7 +21,7 @@
       <div class="form-group">
         <label>Line Color <span class="rule-name">(text-decoration-color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
           <div ref="colorPanel">
-            <Chrome v-model="color" />
+            <Chrome v-model="color" @input="changeColor"/>
           </div>
       </div>
     </template>
@@ -68,15 +68,15 @@ export default {
           if (rule.value) rules.push(rule.label)
         })
         if (!rules.length || rules.includes('none')) {
-          this.ruleStore['text-decoration-line'] = 'none'
+          this.ruleStore['text-decoration-line'].value = 'none'
           this.textDecoration[0].value = true
-        } else this.ruleStore['text-decoration-line'] = rules.join(' ')
+        } else this.ruleStore['text-decoration-line'].value = rules.join(' ')
       },
       deep: true
     },
     color: {
       handler (value) {
-        this.ruleStore['text-decoration-color'] = this.renderedColor
+        this.ruleStore['text-decoration-color'].value = this.renderedColor
       }
     }
   },
@@ -91,6 +91,9 @@ export default {
           if (rule.value) this.textDecoration[0].value = false
           break
       }
+    },
+    changeColor () {
+      this.ruleStore['text-decoration-color'].value = this.renderedColor
     }
   }
 }

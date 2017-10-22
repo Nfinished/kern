@@ -16,15 +16,27 @@
         </select>
       </div> -->
       <div class="form-group">
+        <label for="">Size<span class="rule-name">(font-size)</span></label>
+        <div class="combo-input">
+          <input type="text" v-model="ruleStore['font-size'].value">
+          <select id="fontSize" v-model="ruleStore['font-size'].type">
+            <option value="em">em</option>
+            <option value="rem">rem</option>
+            <option value="px">px (pixels)</option>
+            <option value="%">%</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
         <label>Variant <span class="rule-name">(font-variant)</span></label>
-        <ToggleButton id="FontVariantToggle" @change="ruleStore['font-variant'] = ruleStore['font-variant'] === 'normal' ? 'small-caps' : 'normal'" color="#9b4dca" />
-        <label class="toggle-label" :class="{disabled: ruleStore['font-variant'] === 'normal'}">small-caps</label>
+        <ToggleButton id="FontVariantToggle" @change="ruleStore['font-variant'].value = ruleStore['font-variant'].value === 'normal' ? 'small-caps' : 'normal'" color="#9b4dca" />
+        <label class="toggle-label" :class="{disabled: ruleStore['font-variant'].value === 'normal'}">small-caps</label>
       </div>
       <div class="form-group slider" id="weightSlider">
         <label>Weight <span class="rule-name">(font-weight)</span></label>
         <VueSlider
         ref="weightSlider"
-        v-model="weight"
+        v-model="ruleStore['font-weight'].value"
         :data="weightOptions"
         :min="100"
         :max="900"
@@ -63,32 +75,16 @@ export default {
         100,
         200,
         300,
-        '400 (normal)',
+        'normal',
         500,
         600,
-        '700 (bold)',
+        'bold',
         800,
         900
       ]
-    }
-  },
-  watch: {
-    weight: {
-      handler (value) {
-        const input = parseInt(this.weight)
-        if (input === this.weight) this.ruleStore['font-weight'] = input
-        else if (input === 700) this.ruleStore['font-weight'] = 'bold'
-        else this.ruleStore['font-weight'] = 'normal'
-      }
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-
-.slider {
-  margin-bottom: 50px;
-}
-
-</style>
+<style lang="scss" scoped></style>

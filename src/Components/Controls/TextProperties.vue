@@ -4,13 +4,18 @@
       <div class="form-group">
         <label>Leading <span class="rule-name">(line-height)</span></label>
         <div class="combo-input">
-          <input type="text" v-model="lineHeight.value ":class="{disabled: lineHeight.type === 'normal'}" :disabled="lineHeight.type === 'normal'">
-          <select id="letterSpacingType" v-model="lineHeight.type">
+          <input
+            type="text"
+            v-model="lineHeight"
+            @input="valueChange('line-height')"
+            :class="{disabled: ruleStore['line-height'].type === 'normal'}"
+            :disabled="ruleStore['line-height'].type === 'normal'">
+          <select id="lineHeightType" v-model="ruleStore['line-height'].type" @change="typeChange('line-height')">
             <option value="normal">normal</option>
             <option value="">multiplier</option>
-            <option value="px">px (pixels)</option>
-            <option value="em">em (* font size)</option>
-            <option value="%">% (percent)</option>
+            <option value="px">px</option>
+            <option value="em">em</option>
+            <option value="%">%</option>
           </select>
         </div>
       </div>
@@ -19,13 +24,14 @@
         <div class="combo-input">
           <input
             type="text"
-            v-model="letterSpacing.value"
-            :class="{ disabled: letterSpacing.type === 'normal' }"
-            :disabled="letterSpacing.type === 'normal'">
-          <select id="letterSpacingType" v-model="letterSpacing.type">
+            v-model="letterSpacing"
+            @input="valueChange('letter-spacing')"
+            :class="{disabled: ruleStore['letter-spacing'].type === 'normal'}"
+            :disabled="ruleStore['letter-spacing'].type === 'normal'">
+          <select id="letterSpacingType" v-model="ruleStore['letter-spacing'].type" @change="typeChange('letter-spacing')">
             <option value="normal">normal</option>
             <option value="px">px</option>
-            <option value="em">em (* font size)</option>
+            <option value="em">em</option>
           </select>
         </div>
       </div>
@@ -34,13 +40,14 @@
         <div class="combo-input">
           <input
             type="text"
-            v-model="wordSpacing.value"
-            :class="{ disabled: wordSpacing.type === 'normal' }"
-            :disabled="wordSpacing.type === 'normal'">
-          <select id="wordSpacingType" v-model="wordSpacing.type">
+            v-model="wordSpacing"
+            @input="valueChange('word-spacing')"
+            :class="{disabled: ruleStore['word-spacing'].type === 'normal'}"
+            :disabled="ruleStore['word-spacing'].type === 'normal'">
+          <select id="wordSpacingType" v-model="ruleStore['word-spacing'].type" @change="typeChange('word-spacing')">
             <option value="normal">normal</option>
             <option value="px">px</option>
-            <option value="em">em (* font size)</option>
+            <option value="em">em</option>
           </select>
         </div>
       </div>
@@ -59,44 +66,46 @@ export default {
   store: ['ruleStore'],
   data () {
     return {
-      lineHeight: { type: 'normal', value: '' },
-      letterSpacing: { type: 'normal', value: '' },
-      wordSpacing: { type: 'normal', value: '' }
+      lineHeight: '',
+      letterSpacing: '',
+      wordSpacing: ''
     }
   },
-  watch: {
-    lineHeight: {
-      handler (value) {
-        const input = parseInt(value.value)
-        if (value.type !== 'normal' && input) {
-          this.ruleStore['line-height'] = input + value.type
-        } else {
-          this.ruleStore['line-height'] = 'normal'
-        }
-      },
-      deep: true
+  methods: {
+    valueChange (type) {
+      switch (type) {
+        case 'line-height':
+          this.ruleStore[type].value = this.lineHeight
+          break
+        case 'letter-spacing':
+          this.ruleStore[type].value = this.letterSpacing
+          break
+        case 'word-spacing':
+          this.ruleStore[type].value = this.wordSpacing
+          break
+        default:
+          break
+      }
     },
-    letterSpacing: {
-      handler (value) {
-        const input = parseInt(value.value)
-        if (value.type !== 'normal' && input) {
-          this.ruleStore['letter-spacing'] = input + value.type
-        } else {
-          this.ruleStore['letter-spacing'] = 'normal'
+    typeChange (type) {
+      if (this.ruleStore[type].type === 'normal') {
+        this.ruleStore[type].value = ''
+        return false
+      } else {
+        switch (type) {
+          case 'line-height':
+            this.ruleStore[type].value = this.lineHeight
+            break
+          case 'letter-spacing':
+            this.ruleStore[type].value = this.letterSpacing
+            break
+          case 'word-spacing':
+            this.ruleStore[type].value = this.wordSpacing
+            break
+          default:
+            break
         }
-      },
-      deep: true
-    },
-    wordSpacing: {
-      handler (value) {
-        const input = parseInt(value.value)
-        if (value.type !== 'normal' && input) {
-          this.ruleStore['word-spacing'] = input + value.type
-        } else {
-          this.ruleStore['word-spacing'] = 'normal'
-        }
-      },
-      deep: true
+      }
     }
   }
 }
