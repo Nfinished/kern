@@ -24,7 +24,7 @@
         </div>
         <div class="column editor-column">
           <div id="editor" :style="styles" contenteditable="true" spellcheck="false">
-            Welcome to Kern! Play around with the settings on the sidebar to modify the way I look, or click on me to use your own text!
+            Welcome to Kern! Play around with the settings on the sidebar to modify the way I look, or edit me to use your own text!
           </br>
           </br>
           Kern is still in development, so some things may not work the way they're intended, and others may not work at all.
