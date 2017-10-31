@@ -2,6 +2,8 @@
 
 # kern
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Nfinished/kern.svg)](https://greenkeeper.io/)
+
 > A CSS text templating tool
 
 ## Build Setup
