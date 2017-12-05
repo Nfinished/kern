@@ -23,7 +23,7 @@
           <InfoPanel />
         </div>
         <div class="column editor-column">
-          <div id="editor" :style="ruleStore" contenteditable="true" spellcheck="false">
+          <div id="editor" :style="styles" contenteditable="true" spellcheck="false">
             Welcome to Kern! Play around with the settings on the sidebar to modify the way I look, or click on me to use your own text!
           </br>
           </br>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="column settings-column settings-dashboard">
-          <component v-for="control in Controls" :key="control.id" :is="control" />
+          <component v-for="control, name in Controls" :key="control.id" :is="Controls[name]" />
         </div>
       </div>
     </div>
@@ -43,30 +43,27 @@
 
 <script>
 import InfoPanel from './Components/InfoPanel'
-
-import FontProperties from './Components/Controls/FontProperties'
-import Color from './Components/Controls/Color'
-import TextDecoration from './Components/Controls/TextDecoration'
-import TextProperties from './Components/Controls/TextProperties'
+import * as Controls from './Components/Controls/controlList'
 
 export default {
   name: 'app',
   store: ['ruleStore'],
   components: {
     InfoPanel,
-    FontProperties,
-    Color,
-    TextDecoration,
-    TextProperties
+    ...Controls
   },
   data () {
     return {
-      Controls: [
-        'FontProperties',
-        'Color',
-        'TextDecoration',
-        'TextProperties'
-      ]
+      Controls
+    }
+  },
+  computed: {
+    styles () {
+      const styles = {}
+      for (const rule in this.ruleStore) {
+        styles[rule] = this.ruleStore[rule].value + (this.ruleStore[rule].type || '')
+      }
+      return styles
     }
   }
 }

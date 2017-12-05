@@ -43,6 +43,12 @@ h4 {
   text-transform: capitalize;
 }
 
+// Slider styles
+.slider {
+  margin-bottom: 50px;
+}
+
+// Toggle styles
 .toggleable {
   transform: translateX(-12px)
 }
@@ -57,15 +63,9 @@ h4 {
   }
 }
 
+// Colorpicker styles
 .color-ref {
   display: block;
   font-size: 1em;
-}
-
-input[type='radio'] {
-  + label {
-    display: inline-block;
-    margin-left: 15px;
-  }
 }
 </style>

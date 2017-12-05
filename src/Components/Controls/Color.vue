@@ -4,7 +4,7 @@
       <div class="form-group">
         <label>Text Color <span class="rule-name">(color)</span><span class="color-ref" :style="{color: renderedColor }">{{ renderedColor }}</span></label>
           <div ref="colorPanel" id="TextColorPicker">
-            <Chrome v-model="color" />
+            <Chrome v-model="color" @input="changeColor" />
           </div>
       </div>
     </template>
@@ -35,11 +35,9 @@ export default {
       else return this.color.hex
     }
   },
-  watch: {
-    color: {
-      handler (value) {
-        this.ruleStore.color = this.renderedColor
-      }
+  methods: {
+    changeColor () {
+      this.ruleStore.color.value = this.renderedColor
     }
   }
 }
