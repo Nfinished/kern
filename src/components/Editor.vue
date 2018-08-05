@@ -1,5 +1,5 @@
 <template>
-  <div class="editor" ref="editor" :style="style" contenteditable="true" spellcheck="false">
+  <div class="editor" ref="editor" :style="styles" contenteditable="true" spellcheck="false" :class="{codeMenuOpen, optionsMenuOpen}">
     Welcome to Kern! Play around with the settings on the sidebar to modify the way I look, or edit me to use your own text!
     <br>
     <br>
@@ -11,21 +11,48 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'editor',
   computed: {
-    style () { return this.$store.getters.editorStyles }
+    ...mapGetters({
+      styles: 'editorStyles',
+      codeMenuOpen: 'isCodeMenuOpen',
+      optionsMenuOpen: 'isOptionsMenuOpen'
+    })
   }
 }
 </script>
 
 <style lang="scss" scoped>
   .editor {
+    background-color: white;
     height: 100%;
+    margin-left: 0;
     padding-top: 60px;
+    position: relative;
+    transition: all .25s ease-out;
+    // transition: all .5s linear, width 1s linear, margin-left 1s linear;
+    width: 100%;
+    z-index: 2;
 
     &:focus {
       outline: 0;
+    }
+
+    &.codeMenuOpen {
+      width: calc(100% - 200px);
+      margin-left: 200px;
+    }
+
+    &.optionsMenuOpen {
+      width: calc(100% - 200px);
+      margin-right: 200px;
+    }
+
+    &.codeMenuOpen.optionsMenuOpen {
+      width: calc(100% - 400px);
     }
   }
 </style>

@@ -18,7 +18,6 @@ const getters = {
     }
   },
   createRuleFontSize: ({ fontSize }) => {
-    console.log(fontSize)
     const { value, unit } = fontSize
     return !value || unit === 'normal' ? null : value + unit
   },

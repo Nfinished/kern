@@ -4,8 +4,8 @@ const state = {
 }
 
 const mutations = {
-  toggleCodeMenu ({codeMenuOpen}) { codeMenuOpen = !codeMenuOpen },
-  toggleOptionsMenu ({optionsMenuOpen}) { optionsMenuOpen = !optionsMenuOpen }
+  toggleCodeMenu (state) { state.codeMenuOpen = !state.codeMenuOpen },
+  toggleOptionsMenu (state) { state.optionsMenuOpen = !state.optionsMenuOpen }
 }
 
 const getters = {
