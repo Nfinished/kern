@@ -37,7 +37,7 @@ export default {
     transition: all .25s ease-out;
     // transition: all .5s linear, width 1s linear, margin-left 1s linear;
     width: 100%;
-    z-index: 2;
+    z-index: 99;
 
     &:focus {
       outline: 0;

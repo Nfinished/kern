@@ -3,8 +3,8 @@
     <Editor />
     <Visualizer />
     <Options />
-    <button style="position: absolute; top: 0; right: 500px; z-index: 2" @click="toggleCodeMenu">toggleCode</button>
-    <button style="position: absolute; top: 40px; right: 500px; z-index: 2" @click="toggleOptionsMenu">toggleOptions</button>
+    <button style="position: absolute; top: 0; right: 500px; z-index: 100" @click="toggleCodeMenu">toggleCode</button>
+    <button style="position: absolute; top: 40px; right: 500px; z-index: 100" @click="toggleOptionsMenu">toggleOptions</button>
   </div>
 </template>
 

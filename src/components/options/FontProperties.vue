@@ -1,7 +1,7 @@
 <template>
-  <div class="form-body">
+  <div>
     <div class="form-group">
-        <label for="">Size<span class="rule-name">(font-size)</span></label>
+        <label>Size<span class="rule-name">(font-size)</span></label>
         <div class="combo-input">
           <input type="text" v-model.number="fontSizeValue" :disabled="fontSizeUnit === 'initial'">
           <select v-model="fontSizeUnit">
