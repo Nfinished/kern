@@ -28,9 +28,11 @@ export default {
 <style lang="scss" scoped>
   .editor {
     background-color: white;
+    border-left: .3rem solid #9b4dca;
+    border-right: .3rem solid #9b4dca;
     height: 100%;
     margin-left: 0;
-    padding-top: 60px;
+    padding: 60px 30px 0;
     position: relative;
     transition: all .25s ease-out;
     // transition: all .5s linear, width 1s linear, margin-left 1s linear;
@@ -47,12 +49,12 @@ export default {
     }
 
     &.optionsMenuOpen {
-      width: calc(100% - 200px);
-      margin-right: 200px;
+      width: calc(100% - 300px);
+      margin-right: 300px;
     }
 
     &.codeMenuOpen.optionsMenuOpen {
-      width: calc(100% - 400px);
+      width: calc(100% - 500px);
     }
   }
 </style>

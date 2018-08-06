@@ -1,6 +1,6 @@
 const state = {
-  codeMenuOpen: false,
-  optionsMenuOpen: false
+  codeMenuOpen: true,
+  optionsMenuOpen: true
 }
 
 const mutations = {

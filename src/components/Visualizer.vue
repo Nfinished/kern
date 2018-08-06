@@ -33,6 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .visualizer {
+  border-left: 0;
   height: 100%;
   font-size: .8em;
   left: 0;
@@ -41,5 +42,6 @@ export default {
   padding: 60px 1.5em 0;
   position: absolute;
   top: 0;
+  width: 200px;
 }
 </style>

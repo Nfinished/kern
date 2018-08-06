@@ -1,15 +1,31 @@
 const state = {
   fontSize: {
     value: null,
-    unit: 'normal'
+    unit: 'initial'
   },
-  fontVariant: null,
+  fontVariant: false,
   fontWeight: 400
 }
 
+const mutations = {
+  updateFontSizeValue (state, value) {
+    state.fontSize.value = value
+  },
+  updateFontSizeUnit (state, value) {
+    state.fontSize.unit = value
+  },
+  updateFontVariant (state, value) {
+    state.fontVariant = value
+  },
+  updateFontWeight (state, value) {
+    state.fontWeight = value
+  }
+}
+
 const getters = {
-  getFontProperties: ({ fontVariant }, getters) => {
+  getFontProperties: (state, getters) => {
     const fontSize = getters.createRuleFontSize
+    const fontVariant = getters.createRuleFontVariant
     const fontWeight = getters.createRuleFontWeight
     return {
       fontSize,
@@ -19,7 +35,10 @@ const getters = {
   },
   createRuleFontSize: ({ fontSize }) => {
     const { value, unit } = fontSize
-    return !value || unit === 'normal' ? null : value + unit
+    return (!value || typeof value !== 'number') || unit === 'initial' ? null : value + unit
+  },
+  createRuleFontVariant: ({ fontVariant }) => {
+    return fontVariant ? 'small-caps' : null
   },
   createRuleFontWeight: ({ fontWeight }) => {
     switch (fontWeight) {
@@ -35,5 +54,6 @@ const getters = {
 
 export default {
   state,
+  mutations,
   getters
 }
