@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="title">
+    <div class="title" @click="open = !open">
     <icon :class="['caret', { open }]" icon="angle-right" size="lg" fixed-width></icon>
-    <h4 v-text="component.name.replace(/-/g, ' ')" @click="open = !open"></h4>
+    <h4 v-text="component.name.replace(/-/g, ' ')"></h4>
     </div>
     <VueSlideToggle  :open="open" tag="div" :duration="150" class="form-body">
       <component :is="component" />
