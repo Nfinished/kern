@@ -19,7 +19,6 @@ const mutations = {
 
 const getters = {
   getFontColor: ({ color }) => {
-    console.log(color)
     switch (color.a) {
       case 1:
         return color.hex === '#000000' ? null : color.hex
